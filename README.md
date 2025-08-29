@@ -7,7 +7,8 @@ drop a .md file for a project idea
 3. ML
 
 
-#If any suggestion for improvement in other's project idea 
+# If any suggestion for improvement in other's project idea 
+
 *drop a (actual project name)improvised.md named file*
 
 Thank you so much!!
