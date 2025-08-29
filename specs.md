@@ -73,3 +73,41 @@ after computing final_emotion and transcript, simply print() and return (don't w
 
 Optionally sleep for the display length if you want to simulate vanish (not necessary for console).
 
+---
+# Architecture & components
+
+Audio front-end
+
+Microphone (wearable / lapel / headset).
+
+Preproc: resample to 16 kHz mono, noise suppression (optional), beamforming if mic-array available.
+
+Voice Activity Detection (VAD) & endpointing
+
+webrtcvad or a lightweight energy+VAD to cut audio into utterances (short segments representing one statement).
+
+(Optional) Speaker diarization
+
+pyannote.audio or lightweight clustering to label speakers if you need Speaker 1 / 2 / ….
+
+ASR (per-utterance)
+
+Low-latency ASR that you can run locally: whisper.cpp (ggml) or faster-whisper or Vosk depending on device and accuracy/latency needs.
+
+For a fast prototype on a laptop, faster-whisper / Whisper small works well; for very lightweight Pi use vosk or whisper.cpp.
+
+Text sentiment classifier
+
+Hugging Face pipeline("sentiment-analysis") with a small transformer (or a distilled model) for speed.
+
+Audio emotion classifier (optional but recommended)
+
+pipeline("audio-classification", model=...) using a wav2vec2 or SpeechBrain emotion model to get tone-based emotion (anger, sadness, joy, neutral).
+
+Fusion logic
+
+Combine text sentiment + audio emotion into a final label (rules or a small meta-classifier).
+
+Renderer
+
+Console, web UI, WebSocket to phone/glasses, Android HUD, or AR overlay.
