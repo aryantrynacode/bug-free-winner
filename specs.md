@@ -44,3 +44,32 @@ So while someone is still speaking, the subtitles are already appearing.
 ---
 Similar project for getting a reference
 ![google's similar project](https://github.com/google/live-transcribe-speech-engine)
+
+---
+
+Ephemeral, per-statement real-time subtitles (no storage) — plan + runnable example
+
+Perfect — you want each utterance to be transcribed, shown to the user immediately, then disappear (never stored). Below is a compact plan + two runnable options you can pick: (A) quick console prototype or (B) WebSocket + browser HUD (recommended if you want an overlay/AR/phone UI). Both are ephemeral by design (no disk writes, no DB). I give the code, run instructions, and tuning tips.
+
+How it works (summary)
+
+Microphone → VAD segments speech into utterances (one statement).
+
+Send each utterance to ASR → get final transcript for that utterance.
+
+Run sentiment/emotion fusion.
+
+Broadcast the single-line JSON {speaker, text, emotion, timestamp} to connected clients.
+
+Clients render the line immediately and auto-remove it after N seconds (e.g., 4s). No server-side storage.
+
+A. Quick console-only prototype (ephemeral)
+
+If only need to see it working locally on laptop, use the earlier script but print and drop results. No storage.
+
+What to change from previous script
+
+after computing final_emotion and transcript, simply print() and return (don't write file, don't append to DB).
+
+Optionally sleep for the display length if you want to simulate vanish (not necessary for console).
+
