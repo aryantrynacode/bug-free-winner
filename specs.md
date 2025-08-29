@@ -2,10 +2,10 @@
 similar to transcription but in real time
 ---
 #features 
-1. speech to text real time
-2. safety alerts - alarms recognition , siren recognition
+# 1. speech to text real time
+# 2. safety alerts - alarms recognition , siren recognition
 
-Simple method
+# 3. Simple method
 microphone connected to glasses for better audio --> A  streaming speech recognition model(like whisper streaming,Deepspeech streaming or Google's RNN-T/Conformer) runs -->transcribe audio chunk by chunk.
 first , it outputs a best guess --> may be irrelevent --> as more context arrives , the model updates the text 
 
@@ -40,3 +40,7 @@ Humans tolerate ~300–500 ms delay in subtitles (same as a bad Zoom connection)
 ASR systems can process faster than real-time (e.g., Whisper tiny can transcribe 1 second of audio in ~50–200 ms on a phone).
 
 So while someone is still speaking, the subtitles are already appearing.
+
+---
+Similar project for getting a reference
+![google's similar project](https://github.com/google/live-transcribe-speech-engine)
