@@ -99,3 +99,68 @@ Agent 3: Files complaint + tracks updates.
 Integration with Twitter/X → Auto-tweets tagged complaints to local authorities.
 
 Reward Points → Encourage more citizens to report issues (like Swachh Bharat mission).
+
+# 1-Month Roadmap for CivicFix AI
+# ✅ Week 1: Foundations & Setup
+
+Goal: Get the base structure, auth system, and database ready.
+
+ Finalize tech stack (Streamlit/React frontend, FastAPI backend, Postgres or Firebase).
+
+ Setup project repos (frontend + backend) and folder structure.
+
+ Configure database schema (users, complaints, credits).
+
+ Implement Login & Registration (Firebase Auth or FastAPI + JWT).
+
+ Create a basic dashboard → show username + civic credits.
+
+👉 Deliverable: Users can sign up/login and see their profile with 0 credits.
+
+# ✅ Week 2: Complaint Filing Workflow
+
+Goal: Enable uploading complaints + storing in DB.
+
+ Create upload form (image/video + description).
+
+ Integrate AI classification (YOLOv8 or placeholder model).
+
+ Extract metadata (location/GPS or manual input).
+
+ Build backend endpoint /file-complaint.
+
+ Store complaint in DB (status = Filed).
+
+👉 Deliverable: User can upload evidence → complaint stored in DB & linked to user.
+
+# ✅ Week 3: Automation + Credits System
+
+Goal: Complaints get filed officially + credits assigned.
+
+ Implement automation layer (Selenium/Playwright stub for govt. site).
+
+ Assign 100 Civic Credits automatically after filing.
+
+ Update credits in DB + insert into credits_log.
+
+ Dashboard shows complaints list + total credits.
+
+👉 Deliverable: Filing a complaint adds 100 credits and updates dashboard.
+
+# ✅ Week 4: Tracking, UI Polish & Testing
+
+Goal: End-to-end MVP ready.
+
+ Add tracking feature → store official complaint ID & status.
+
+ Implement /get-status endpoint (mock or scrape status).
+
+ Add leaderboard page (top citizens by credits).
+
+ UI polish → badges, credit counter, status updates.
+
+ End-to-end testing + bug fixes.
+
+ Deploy (Streamlit Cloud + Render/Heroku for backend, or Firebase Hosting).
+
+👉 Deliverable: MVP Launch – A citizen logs in, files a complaint, earns credits, and sees updates.
